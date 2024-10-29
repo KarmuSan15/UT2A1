@@ -1,29 +1,32 @@
-import { ThemeOptions } from '@mui/material/styles';
+import { createTheme, ThemeOptions } from '@mui/material/styles';
 
 export const themeOptions: ThemeOptions = {
   palette: {
     mode: 'light',
     primary: {
-      main: '#1a73e8', // Azul con buen contraste
+      main: '#1a73e8',
     },
     secondary: {
-      main: '#ffc107', // Amarillo accesible
+      main: '#ffc107',
     },
     error: {
-      main: '#d32f2f', // Rojo con contraste alto
+      main: '#d32f2f',
     },
     success: {
-      main: '#388e3c', // Verde accesible
+      main: '#388e3c',
     },
     warning: {
-      main: '#f57c00', // Naranja accesible
+      main: '#f57c00',
     },
     text: {
-      primary: '#212121', // Texto oscuro en fondos claros
-      secondary: '#757575', // Texto secundario accesible
+      primary: '#212121',
+      secondary: '#757575',
     },
     background: {
-      default: '#fafafa', // Fondo claro y accesible
+      default: '#fafafa',
     },
   },
 };
+
+const theme = createTheme(themeOptions);
+export default theme;
