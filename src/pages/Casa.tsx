@@ -5,7 +5,12 @@ import { RootState } from '../store';
 import { authActions } from '../store/authSlice';
 
 function Home() {
+  // Accedemos a los datos del usuario desde el estado de Redux
   const userData = useSelector((state: RootState) => state.authenticator);
+
+  // Imprimimos en la consola el rol del usuario
+  console.log('Rol del usuario:', userData.userRole);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -51,3 +56,4 @@ function Home() {
 }
 
 export default Home;
+
