@@ -5,6 +5,8 @@ import Home from './pages/Casa';
 import Reports from './pages/Reporte';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ErrorPage from "./pages/Rojopaguina";
+import { Provider } from 'react-redux';  // Importa el Provider de react-redux
+import { store } from './store';         // Importa el store que configuraste
 
 const router = createBrowserRouter([
   {
@@ -20,9 +22,11 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <RouterProvider router={router} />
-    </ThemeProvider>
+    <Provider store={store}>  {/* Envuelve RouterProvider con Provider */}
+      <ThemeProvider theme={theme}>
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </Provider>
   );
 }
 

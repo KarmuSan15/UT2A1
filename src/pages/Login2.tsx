@@ -4,19 +4,29 @@ import Grid from '@mui/material/Grid';
 import LockIcon from '@mui/icons-material/Lock';
 import Alert from '@mui/material/Alert';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';         // Importamos useDispatch
+import { authActions } from '../store/authSlice';  // Importamos las acciones de authSlice
 
 function Login2() {
   const [data, setData] = useState({ usuario: '', contraseña: '', corresponden: 0 });
   const bduser = 'Toruh';
   const bdpasswd = 'Toruh';
   const navigate = useNavigate();
+  const dispatch = useDispatch();  // Creamos una instancia de useDispatch
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (data.usuario === bduser && data.contraseña === bdpasswd) {
       setData({ ...data, corresponden: 1 });
       console.log("Usuario: " + data.usuario + ", Contraseña: " + data.contraseña);
-      navigate("/Home");
+      
+      // Dispatch para actualizar el estado de autenticación
+      dispatch(authActions.login({
+        name: data.usuario,   // Asigna el nombre de usuario del formulario
+        role: 'administrador' // Establece el rol; aquí puedes cambiarlo según tu lógica
+      }));
+
+      navigate("/Home");  // Navega a la página de inicio
     } else {
       setData({ ...data, corresponden: 2 });
       console.log("Usuario: " + data.usuario + ", Contraseña: " + data.contraseña);
